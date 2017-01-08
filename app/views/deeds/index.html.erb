@@ -1,0 +1,9 @@
+<h1> Welcome to the Full List of Deeds! </h1>
+<h2> <% @deeds.each do |deed| %></h2>
+
+
+<div> Description: <%= deed.description %> </div>
+<a href="/deeds/<%= deed.id %>" > More Details! </a>
+<div> ---------------------- </div>
+
+<% end %>
