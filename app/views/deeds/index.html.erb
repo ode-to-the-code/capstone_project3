@@ -4,6 +4,25 @@
 
 <div> Description: <%= deed.description %> </div>
 <a href="/deeds/<%= deed.id %>" > More Details! </a>
+<div>
+  
+  <%= form_tag "/subscriptions", method: :post do %>
+  <div>
+    <%= hidden_field_tag :user_id, current_user.id %>
+  </div>
+  <div>
+    <%= hidden_field_tag :deed_id, deed.id %>
+  </div>
+  <div>
+  
+  <div>
+    <%= submit_tag "Subscribe!!!" %>
+  </div>
+<% end %>
+
+
+
+</div>
 <div> ---------------------- </div>
 
 <% end %>

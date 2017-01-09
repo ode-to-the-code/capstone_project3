@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  get '/' => 'deeds#index'
   get '/deeds' => 'deeds#index'
   get '/deeds/:id' => 'deeds#show'
+
+  get '/subscriptions/new' => 'subscriptions#new'
+  post '/subscriptions' => 'subscriptions#create'
 end

@@ -1,0 +1,16 @@
+<%= form_tag "/subscriptions", method: :post do %>
+  <div>
+    <%= label_tag :name %>
+    <%= hidden_field_tag :name %>
+  </div>
+  <div>
+    <%= label_tag :address %>
+    <%= hidden_field_tag :address %>
+  </div>
+  <div>
+  
+  <div>
+    <%= submit_tag "Submit" %>
+  </div>
+<% end %>
+
