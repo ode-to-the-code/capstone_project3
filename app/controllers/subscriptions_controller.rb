@@ -7,7 +7,7 @@ class SubscriptionsController < ApplicationController
   def create
     subscription = Subscription.new(user_id: params[:user_id], deed_id: params[:deed_id])
     subscription.save
-    p subscription.errors.full_messages
+    # p subscription.errors.full_messages
     redirect_to '/deeds'
   end
 

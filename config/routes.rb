@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   get '/' => 'deeds#index'
+  get '/test' => 'deeds#index2'
   get '/deeds' => 'deeds#index'
   get '/deeds/:id' => 'deeds#show'
 
