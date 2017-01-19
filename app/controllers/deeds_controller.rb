@@ -10,4 +10,28 @@ class DeedsController < ApplicationController
     render 'show.html.erb'
   end
 
+  def new
+    render 'new.html.erb'
+  end
+
+  def create
+    deed = Deed.new(
+      max_volunteers: params[:max_volunteers],
+      min_volunteers: params[:min_volunteers],
+      description: params[:description],
+      location: params[:location],
+      category: params[:category],
+      max_points: params[:max_points],
+      name: params[:name],
+      image: params[:image]
+
+
+
+      )
+    deed.save
+    redirect_to "/deeds/#{deed.id}"
+
+
+  end
+
 end

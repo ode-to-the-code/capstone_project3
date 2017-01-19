@@ -1,9 +1,10 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<style>
+   #map {
+    height: 400px;
+    width: 100%;
+   }
+</style>
+
 <h1> Welcome to the Full List of Deeds! </h1>
 
   <section class="section products-grid second-style">
@@ -14,7 +15,7 @@
             <div class="inner-product">
               <span class="onsale">Sale!</span>
               <div class="product-thumbnail">
-                <img src="build/img/products/2.jpg" class="img-responsive" alt="">
+                <img src="http://www.creepyed.com/wp-content/uploads/clip_image014.png" class="img-responsive" alt="">
               </div>
               <div class="product-details text-center">
                 <div class="product-btns">
@@ -30,7 +31,7 @@
                 </div>
               </div>
             </div>
-            <h3 class="product-title"><a href="/deeds/<%= deed.id %>"><%= deed.description %></a></h3>
+            <h3 class="product-title"><a href="/deeds/<%= deed.id %>"><%= deed.name %></a></h3>
             <div class="star-rating">
               <span style="width:90%"></span>
             </div>
@@ -46,7 +47,7 @@
                   <% if current_user %>
                     <%= hidden_field_tag :user_id, current_user.id %>
                   <% end %>
-                  <%= hidden_field_tag :deed_id, deed.id %>
+                  <%= hidden_field_tag :description, deed.id %>
                   <%= submit_tag "Subscribe!!!" %>
               <% end %>
             </p>
@@ -56,5 +57,24 @@
       <div class="clearfix text-center">
         <a href="#!" class="btn btn-default">Show More</a>
       </div>
-    </div><!-- /.container -->
+    </div><!-- /. container -->
   </section><!-- /.products-grid -->
+  <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_api_key']%>&callback=initMap">
+    </script>
+  </body>
+</html>
