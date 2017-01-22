@@ -3,5 +3,10 @@
 <br>
 
 <% @deeds.each do |deed| %>
-<p> <%= deed.max_volunteers %> </p>
+<p> Name: <%= deed.name %></p>
+<p> Description: <br> <br> 
+<%= deed.description %> </p>
+
+<br>
+<br>
 <% end %>

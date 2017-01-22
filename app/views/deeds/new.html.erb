@@ -1,8 +1,15 @@
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 <h1>Make a New Deed!</h1>
-<%= form_tag '/deeds', method: :post do  %>
-     <div>
+<%= form_tag '/deeds', method: :post, class: "inputs-border" do  %>
+  <div class="form-group">
     <%= label_tag :name %>
-    <%= text_field_tag :name %>
+    <%= text_field_tag :name, '', class: "form-control" %>
   </div>
   <div>
     <%= label_tag :max_volunteers %>
@@ -33,5 +40,6 @@
     <%= label_tag :image %>
     <%= text_field_tag :image %>
   </div>
-  <%= submit_tag "Submit a New Deed!" %>
+  <%= submit_tag "Submit a New Deed!", class: "btn btn-normal" %>
 <% end %>
+</div>

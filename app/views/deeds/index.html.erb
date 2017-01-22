@@ -13,17 +13,31 @@
         <% @deeds.each do |deed| %>
           <div class="product col-md-3 col-sm-6 col-xs-12" data-product-id="1">
             <div class="inner-product">
-              <span class="onsale">Sale!</span>
-              <div class="product-thumbnail">
-                <img src="http://www.creepyed.com/wp-content/uploads/clip_image014.png" class="img-responsive" alt="">
-              </div>
+              <!-- <span class="onsale">Sale!</span> -->
+              <% if deed.image.present? %>
+                <div class="product-thumbnail">
+                  <p><a href="/deeds/<%= deed.id %>"><%= image_tag deed.image, class: "img-responsive" %></a></p>
+                </div>
+              <% else %>
+                <div class="product-thumbnail">
+                  <img src="build/img/products/2.jpg" class="img-responsive" alt="">
+                </div>
+              <% end %>
+
               <div class="product-details text-center">
                 <div class="product-btns">
                   <span data-toggle="tooltip" data-placement="top" title="Add To Cart">
                     <a href="#!" class="li-icon add-to-cart"><i class="lil-shopping_cart"></i></a>
                   </span>
-                  <span data-toggle="tooltip" data-placement="top" title="Add to Favorites">
-                    <a href="#!" class="li-icon"><i class="lil-favorite"></i></a>
+                  <span data-toggle="tooltip" data-placement="top" title="Subscribe">
+                     <%= form_tag "/subscriptions", id: "subscribe-form", method: :post do %>
+                        <% if current_user %>
+                          <%= hidden_field_tag :user_id, current_user.id %>
+                        <% end %>
+                        <%= hidden_field_tag :deed_id, deed.id %>
+
+                        <a href="#" type="submit" onclick="$('#subscribe-form').submit()" class="li-icon"><i class="lil-favorite"></i></a>
+                    <% end %>
                   </span>
                   <span data-toggle="tooltip" data-placement="top" title="View">
                     <a href="product.html" class="li-icon view-details"><i class="lil-search"></i></a>
@@ -42,14 +56,6 @@
               <del>
                 <span class="amount">$150.00</span>
               </del>
-              
-               <%= form_tag "/subscriptions", method: :post do %>
-                  <% if current_user %>
-                    <%= hidden_field_tag :user_id, current_user.id %>
-                  <% end %>
-                  <%= hidden_field_tag :description, deed.id %>
-                  <%= submit_tag "Subscribe!!!" %>
-              <% end %>
             </p>
           </div><!-- /.product -->
         <% end %>
@@ -74,7 +80,7 @@
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_api_key']%>&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_maps_api']%>&callback=initMap">
     </script>
   </body>
 </html>
