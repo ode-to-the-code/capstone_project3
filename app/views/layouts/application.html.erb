@@ -33,6 +33,7 @@
       <ul class="pull-right list-inline">
         <% if current_user %>
             <li><a href="/users/<%= current_user.id %>">My account</a></li>
+            <li><a href="/users/<%= current_user.id %>"><%= current_user.name %></a></li>
           <% else %>
             <li><a href="/login">Login</a></li>
           <% end %>

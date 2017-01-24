@@ -6,40 +6,42 @@
   <br>
   <br>
 <h1>Make a New Deed!</h1>
+<br>
 <%= form_tag '/deeds', method: :post, class: "inputs-border" do  %>
   <div class="form-group">
     <%= label_tag :name %>
     <%= text_field_tag :name, '', class: "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :max_volunteers %>
-    <%= text_field_tag :max_volunteers %>
+    <%= text_field_tag :max_volunteers, '', class: "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :min_volunteers %>
-    <%= text_field_tag :min_volunteers %>
+    <%= text_field_tag :min_volunteers, '', class: "form-control" %>
   </div>
-    <div>
+    <div class="form-group">
     <%= label_tag :description %>
-    <%= text_field_tag :description %>
+    <%= text_field_tag :description, '', class: "form-control" %>
   </div>
-    <div>
+    <div class="form-group">
     <%= label_tag :location %>
-    <%= text_field_tag :location %>
+    <%= text_field_tag :location, '', class: "form-control" %>
   </div>
-    <div>
+    <div class="form-group">
     <%= label_tag :category %>
-    <%= text_field_tag :category %>
+    <%= text_field_tag :category, '', class: "form-control" %>
   </div>
-    <div>
+    <div class="form-group">
     <%= label_tag :max_points %>
-    <%= text_field_tag :max_points %>
+    <%= text_field_tag :max_points, '', class: "form-control" %>
   </div>
 
-    <div>
+    <div class="form-group">
     <%= label_tag :image %>
-    <%= text_field_tag :image %>
+    <%= text_field_tag :image, '', class: "form-control" %>
   </div>
-  <%= submit_tag "Submit a New Deed!", class: "btn btn-normal" %>
+  <br>
+  <%= submit_tag "Submit Your New Deed!", class: "btn btn-normal" %>
 <% end %>
 </div>

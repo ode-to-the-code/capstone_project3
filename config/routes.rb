@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   get '/subscriptions/new' => 'subscriptions#new'
   post '/subscriptions' => 'subscriptions#create'
+
+  post '/comments' => 'comments#create'
 end

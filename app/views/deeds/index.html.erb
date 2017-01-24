@@ -5,13 +5,13 @@
    }
 </style>
 
-<h1> Welcome to the Full List of Deeds! </h1>
+<h1 class="text-center home-header">Welcome to the Full List of Deeds!</h1>
 
-  <section class="section products-grid second-style">
+  <section class="F">
     <div class="container">
       <div class="row masonry">
         <% @deeds.each do |deed| %>
-          <div class="product col-md-3 col-sm-6 col-xs-12" data-product-id="1">
+          <div class="product col-md-3 col-sm-6 col-xs-12 " data-product-id="1">
             <div class="inner-product">
               <!-- <span class="onsale">Sale!</span> -->
               <% if deed.image.present? %>
@@ -45,7 +45,7 @@
                 </div>
               </div>
             </div>
-            <h3 class="product-title"><a href="/deeds/<%= deed.id %>"><%= deed.name %></a></h3>
+            <h3 class="product-title home-header"><a href="/deeds/<%= deed.id %>"><%= deed.name %></a></h3>
             <div class="star-rating">
               <span style="width:90%"></span>
             </div>
@@ -56,7 +56,6 @@
               <del>
                 <span class="amount">$150.00</span>
               </del>
-            </p>
           </div><!-- /.product -->
         <% end %>
       </div><!-- /.masonry -->

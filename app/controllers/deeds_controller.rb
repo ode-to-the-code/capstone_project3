@@ -7,6 +7,7 @@ class DeedsController < ApplicationController
 
   def show
     @deed = Deed.find_by(id: params[:id])
+    @comment = Comment.new
     render 'show.html.erb'
   end
 
@@ -23,10 +24,8 @@ class DeedsController < ApplicationController
       category: params[:category],
       max_points: params[:max_points],
       name: params[:name],
-      image: params[:image]
-
-
-
+      image: params[:image],
+      user_id: current_user.id
       )
     deed.save
     redirect_to "/deeds/#{deed.id}"
