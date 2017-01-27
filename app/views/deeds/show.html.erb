@@ -1,24 +1,31 @@
-
-<h1> Here's more info about your Deed! </h1>
+<h1><%= @deed.name %></h1>
 <!-- <div> Maximum Volunteers: <%= @deed.max_volunteers%> </div>
 <div> Minimum Volunteers: <%= @deed.min_volunteers %> </div> -->
 <!-- <div> Category: <%= @deed.category %> </div> -->
 <!-- <div> Maximum Points: <%= @deed.max_points %> </div> -->
-<div> Description: <%= @deed.description %> </div>
-<div> Maximum Volunteers: <%= @deed.max_volunteers%> </div>
-<div> Minimum Volunteers: <%= @deed.min_volunteers %> </div>
-<div> Location: <%= @deed.location %> </div>
+<div><%= @deed.description %> </div><br>
+<div>Maximum Volunteers: <%= @deed.max_volunteers%></div>
+<div>Minimum Volunteers: <%= @deed.min_volunteers %></div><br>
+<div>Location: <%= @deed.location %></div>
 
-<h3>Leave a Comment</h3>
+<h3>Comments</h3>
+
 <%= form_tag "/comments", method: :post do %>
-  <div>
-    <%= label_tag :body %>
-    <%= text_field_tag :body, @comment.body %>
+  <div style="display: inline-block;">
+    <%= text_field_tag :body, @comment.body, placeholder: "Leave a comment here" %>
   </div>
-  <div>
+  <div style="display: inline-block;">
     <%= hidden_field_tag :deed_id, @deed.id %>
   </div>
-  <div>
-  <%= submit_tag %>
+  <div style="display: inline-block;">
+  <%= submit_tag "Post Comment" %>
+  </div>
+<% end %>
+<br>
+
+<% @deed.comments.each do |comment| %>
+  <div class="well half-screen">
+    <p><small><strong><%= comment.user.name %> on <%= comment.created_at.strftime("%b %d %y") %></strong></small></p>
+    <p><%= comment.body %></p>
   </div>
 <% end %>

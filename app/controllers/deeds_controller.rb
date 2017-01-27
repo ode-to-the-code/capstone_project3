@@ -1,8 +1,12 @@
 class DeedsController < ApplicationController
 
   def index
-    @deeds = Deed.all
-    render 'index.html.erb'
+    if params[:search_name].present?
+      @deeds = Deed.where("name LIKE ?", "%#{params[:search_name]}%")
+    else
+      @deeds = Deed.all
+    end
+      render 'index.html.erb'
   end
 
   def show

@@ -12,6 +12,7 @@
     <!-- All theme style -->
     <link rel="stylesheet" type="text/css" media="all" href="/build/css/min.css">
 
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -48,7 +49,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/deeds">
                 <img  src="https://s30.postimg.org/aq7lfswv5/crowdserve_logo.png" alt="CrowdServe">
             </a>
           </div>
@@ -78,19 +79,21 @@
         <%= message %>
       </div>
     <% end %>
-      <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
 
 
-    <footer class="footer">
+<!--     <footer class="footer">
       <div class="container">
         <div class="widgets">
           <div class="row">
             <div class="col-sm-3 widget widget-about">
               <h3 class="widget-title">CrowdServe</h3>
               <p></p>
-            </div><!-- ./widget -->
-            <div class="col-sm-3 widget widget-links">
+            </div> --><!-- ./widget
+       <div class="col-sm-3 widget widget-links">
               <h3 class="widget-title">My Account</h3>
               <div class="row">
                 <ul class="col-xs-6">
@@ -110,7 +113,7 @@
                   <li><a href="#!" class="effect">Order</a></li>
                 </ul>
               </div>
-            </div><!-- ./widget -->
+            </div>./widget  
             <div class="col-sm-3 widget widget-instagram">
               <h3 class="widget-title">Instagram</h3>
               <ul class="row">
@@ -145,29 +148,28 @@
                   </a>
                 </li>
               </ul>
-            </div><!-- /.widget -->
-            <div class="col-sm-3 widget widget-newsletter">
+             </div>/.widget -->
+            <!-- <div class="col-sm-3 widget widget-newsletter">
               <h3 class="widget-title">Join our Newsletter</h3>
               <form action="#!" method="POST" class="inputs-border clearfix">
                 <div class="form-group">
                   <input type="email" name="email" placeholder="Your Email" class="form-control" autocomplete="off">
-                  <button type="submit" class="btn btn-primary"><i class="lil-long-arrow-right"></i></button>
-                </div>
-              </form>
-              <ul class="social">
+                  <button type="submit" class="btn btn-primary"><i class="lil-long-arrow-right"></i></button> -->
+               <!--  </div>
+              </form>              <ul class="social">
                 <li><a href="#!" target="_blank"><i class="lil-facebook"></i></a></li>
                 <li><a href="#!" target="_blank"><i class="lil-twitter"></i></a></li>
                 <li><a href="#!" target="_blank"><i class="lil-instagram"></i></a></li>
-                <li><a href="#!" target="_blank"><i class="lil-dribbble"></i></a></li>
-              </ul>
-            </div><!-- ./widget -->
-          </div><!-- /.row -->
-        </div><!-- /.widgets -->
-      </div><!-- /.container -->
-      <div class="copy-right text-center">
-        <p>© Copyright 2016. All Rights Reserved. Created by <a href="#!" class="effect">Liliom</a></p>
-      </div>
-    </footer><!-- /.footer -->
+                <li><a href="#!" target="_blank"><i class="lil-dribbble"></i></a></li> -->
+           <!--    </ul> -->
+            <!-- </div>./widget -->
+          <!-- </div>/.row -->
+        <!-- </div>/.widgets -->
+      <!-- </div>/.container -->
+  <!--     <div class="copy-right text-center">
+        <p>© Copyright 2016. All Rights Reserved. Created by <a href="#!" class="effect">Liliom</a></p> -->
+      <!-- </div>
+    </footer> --><!-- /.footer -->
 
     <!-- open/close -->
     <div class="overlay overlay-simplegenie">
@@ -175,10 +177,14 @@
       <div class="container">
         <div class="row text-center pos-r">
           <div class="col-md-7 col-xs-11 col-center col-height-center search-form">
-            <form action="#!" method="POST" class="inputs-bg" id="searchform">
+
+            <%= form_tag "/deeds", class: "inputs-bg", id: "searchform", method: :get  do %>
               <strong>Type a sentence or word you want to search for, And press Enter.</strong>
-              <input type="text" name="q" class="form-control" placeholder="Search..">
-            </form>
+              <%= text_field_tag :search_name, "", class: "form-control", placeholder: "Search.." %>
+            <% end %>
+
+             
+
           </div>
         </div>
       </div>

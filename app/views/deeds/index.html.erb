@@ -1,68 +1,111 @@
+<!-- <div class="no-top-margin"> -->
+<div class="swiper-slider">
+  <!-- Slider main container -->
+  <div class="swiper-container fullscreen">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper text-center">
+      <!-- Slides -->
+      <div class="swiper-slide" style="background-image: url(assets/Porcupine4.jpg);">
+        <div class="valign-wrapper fullscreen">
+          <div class="valign col-xs-offset-3" data-swiper-parallax="-100">
+            <h1>Hello</h1>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide" style="background-image: url(http://www.tentree.com/blog/wp-content/uploads/2015/04/Tree-Planting-Cambodia-2014-Luc-Forsyth-50-1024x683.jpg);">
+        <div class="valign-wrapper fullscreen">
+          <div class="valign col-xs-offset-8" data-swiper-parallax="-100">
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide" style="background-image: url(http://i.tmgrup.com.tr/dailysabah/2016/02/01/645x344/1454266788993.jpg);">
+        <div class="valign-wrapper fullscreen">
+          <div class="valign col-xs-offset-5">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"><i class="lil-chevron_left"></i></div>
+    <div class="swiper-button-next"><i class="lil-chevron_right"></i></div>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+
+
 <style>
-   #map {
-    height: 400px;
-    width: 100%;
-   }
+ #map {
+  height: 400px;
+  width: 100%;
+}
 </style>
 
-<h1 class="text-center home-header">Welcome to the Full List of Deeds!</h1>
+<h1 class="text-center home-header">Your Community's Deeds:</h1>
+<br>
+<br>
+<br>
+<br>
 
-  <section class="F">
-    <div class="container">
-      <div class="row masonry">
-        <% @deeds.each do |deed| %>
-          <div class="product col-md-3 col-sm-6 col-xs-12 " data-product-id="1">
+<section class="F">
+
+
+  <div class="container">
+
+    <% @deeds.each_slice(4) do |four_deeds| %>
+      <div class="row">
+        <% four_deeds.each do |deed| %>
+          <div class="product col-md-3 col-sm-6 col-xs-12 deed-div" data-product-id="1">
             <div class="inner-product">
-              <!-- <span class="onsale">Sale!</span> -->
               <% if deed.image.present? %>
-                <div class="product-thumbnail">
-                  <p><a href="/deeds/<%= deed.id %>"><%= image_tag deed.image, class: "img-responsive" %></a></p>
+               <div class="product-thumbnail">
+                <p><a href="/deeds/<%= deed.id %>"><%= image_tag deed.image, class: "img-responsive" %></a></p>
                 </div>
               <% else %>
                 <div class="product-thumbnail">
                   <img src="build/img/products/2.jpg" class="img-responsive" alt="">
                 </div>
-              <% end %>
+               <% end %>
 
               <div class="product-details text-center">
-                <div class="product-btns">
-                  <span data-toggle="tooltip" data-placement="top" title="Add To Cart">
-                    <a href="#!" class="li-icon add-to-cart"><i class="lil-shopping_cart"></i></a>
-                  </span>
-                  <span data-toggle="tooltip" data-placement="top" title="Subscribe">
-                     <%= form_tag "/subscriptions", id: "subscribe-form", method: :post do %>
-                        <% if current_user %>
-                          <%= hidden_field_tag :user_id, current_user.id %>
-                        <% end %>
-                        <%= hidden_field_tag :deed_id, deed.id %>
-
-                        <a href="#" type="submit" onclick="$('#subscribe-form').submit()" class="li-icon"><i class="lil-favorite"></i></a>
+                 <div class="product-btns mt-50">
+                    <span data-toggle="tooltip" data-placement="top" title="Subscribe">
+                   <%= form_tag "/subscriptions", id: "subscribe-form", method: :post do %>
+                      <% if current_user %>
+                       <%= hidden_field_tag :user_id, current_user.id %>
+                      <% end %>
+                     <%= hidden_field_tag :deed_id, deed.id %>
+                     <a href="#" type="submit" onclick="$('#subscribe-form').submit()" class="li-icon"><i class="lil-favorite"></i></a>
                     <% end %>
                   </span>
                   <span data-toggle="tooltip" data-placement="top" title="View">
-                    <a href="product.html" class="li-icon view-details"><i class="lil-search"></i></a>
+                   <a href="/deeds/<%= deed.id %>" class="li-icon view-details"><i class="lil-search"></i></a>
                   </span>
-                </div>
-              </div>
+               </div>
             </div>
-            <h3 class="product-title home-header"><a href="/deeds/<%= deed.id %>"><%= deed.name %></a></h3>
-            <div class="star-rating">
-              <span style="width:90%"></span>
-            </div>
-            <p class="product-price">
-              <ins>
-                <span class="amount">$66.50</span>
-              </ins>
-              <del>
-                <span class="amount">$150.00</span>
-              </del>
-          </div><!-- /.product -->
-        <% end %>
-      </div><!-- /.masonry -->
-      <div class="clearfix text-center">
+          </div>
+          <h3 class="product-title home-header"><a href="/deeds/<%= deed.id %>"><%= deed.name %></a></h3>
+        </div>
+    <% end %>
+  </div><!-- /.masonry -->
+  <% end %>
+
+
+
+
+
+</div>
+</section>
+      <!-- <div class="clearfix text-center">
         <a href="#!" class="btn btn-default">Show More</a>
-      </div>
-    </div><!-- /. container -->
+      </div> -->
+      <!--     </div> --><!-- /. container -->
   </section><!-- /.products-grid -->
   <div id="map"></div>
     <script>

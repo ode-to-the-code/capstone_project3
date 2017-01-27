@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     
     if @comment.save
       flash[:success] = "Thanks! Your comment was submitted!"
-      redirect_to "/deeds/#{@comment.deed_id} %>"
+      redirect_to "/deeds/#{@comment.deed_id}"
     else
       flash[:success] = "Your comment did not save!"
       render "deeds/show"
