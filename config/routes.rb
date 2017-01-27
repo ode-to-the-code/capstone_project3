@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/deeds/new' => 'deeds#new'
   post '/deeds' => 'deeds#create'
   get '/deeds/:id' => 'deeds#show'
+  get '/deeds' => 'deeds#destroy'
 
   get '/subscriptions/new' => 'subscriptions#new'
   post '/subscriptions' => 'subscriptions#create'
